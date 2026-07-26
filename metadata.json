@@ -1,0 +1,6 @@
+{
+  "name": "우리반 전자 독서기록장",
+  "description": "초·중·고등학교 학생과 교사를 위한 프리미엄 전자 독서기록장 및 구글 시트 연동 플랫폼",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
