@@ -20,7 +20,7 @@ export interface ReadingLog {
   teacherComment?: string; // 교사 코멘트
 }
 
-export type ActiveTab = 'write' | 'my-logs' | 'teacher' | 'hall-of-fame' | 'settings';
+export type ActiveTab = 'write' | 'my-logs' | 'teacher' | 'hall-of-fame' | 'yes24-bestseller' | 'settings';
 
 export interface ClassStats {
   totalLogs: number;

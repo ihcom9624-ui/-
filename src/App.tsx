@@ -16,6 +16,7 @@ import { ReadingForm } from './components/ReadingForm';
 import { MyReadingLog } from './components/MyReadingLog';
 import { TeacherDashboard } from './components/TeacherDashboard';
 import { ReadingKing } from './components/ReadingKing';
+import { Yes24Bestsellers } from './components/Yes24Bestsellers';
 import { SettingsModal } from './components/SettingsModal';
 import { LogDetailModal } from './components/LogDetailModal';
 
@@ -25,6 +26,7 @@ export default function App() {
   const [gasConfig, setGasConfig] = useState<GASConfig>(() => getGASConfig());
   const [teacherPass, setTeacherPass] = useState<string>(() => getTeacherPassword());
   const [selectedLog, setSelectedLog] = useState<ReadingLog | null>(null);
+  const [prefilledBookForLog, setPrefilledBookForLog] = useState<{ title: string; author: string; publisher: string; category?: string } | null>(null);
 
   // Sync state to local storage when logs change
   useEffect(() => {
@@ -117,6 +119,7 @@ export default function App() {
             onSubmitLog={handleSubmitLog}
             gasConfig={gasConfig}
             onGoToMyLogs={() => setActiveTab('my-logs')}
+            initialBookInfo={prefilledBookForLog}
           />
         )}
 
@@ -126,6 +129,15 @@ export default function App() {
             onSelectLog={(log) => setSelectedLog(log)}
             onDeleteLog={handleDeleteLog}
             onGoToWrite={() => setActiveTab('write')}
+          />
+        )}
+
+        {activeTab === 'yes24-bestseller' && (
+          <Yes24Bestsellers
+            onSelectBookForLog={(book) => {
+              setPrefilledBookForLog(book);
+              setActiveTab('write');
+            }}
           />
         )}
 

@@ -8,6 +8,7 @@ interface ReadingFormProps {
   onSubmitLog: (log: ReadingLog) => Promise<void>;
   gasConfig: GASConfig;
   onGoToMyLogs: () => void;
+  initialBookInfo?: { title: string; author: string; publisher: string; category?: string } | null;
 }
 
 const LAST_STUDENT_INFO_KEY = 'class_reading_last_student_info';
@@ -27,6 +28,7 @@ export const ReadingForm: React.FC<ReadingFormProps> = ({
   onSubmitLog,
   gasConfig,
   onGoToMyLogs,
+  initialBookInfo,
 }) => {
   // Student Info State
   const [grade, setGrade] = useState('5학년');
@@ -43,6 +45,16 @@ export const ReadingForm: React.FC<ReadingFormProps> = ({
   const [readDate, setReadDate] = useState(() => new Date().toISOString().split('T')[0]);
   const [rating, setRating] = useState(5);
   const [hoverRating, setHoverRating] = useState(0);
+
+  // Apply initialBookInfo if provided (e.g. from Yes24 Bestseller selection)
+  useEffect(() => {
+    if (initialBookInfo) {
+      if (initialBookInfo.title) setBookTitle(initialBookInfo.title);
+      if (initialBookInfo.author) setAuthor(initialBookInfo.author);
+      if (initialBookInfo.publisher) setPublisher(initialBookInfo.publisher);
+      if (initialBookInfo.category) setCategory(initialBookInfo.category);
+    }
+  }, [initialBookInfo]);
 
   // Content State
   const [summary, setSummary] = useState('');

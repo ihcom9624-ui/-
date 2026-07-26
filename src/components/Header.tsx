@@ -99,6 +99,19 @@ export const Header: React.FC<HeaderProps> = ({
             </button>
 
             <button
+              id="nav-tab-yes24-bestseller"
+              onClick={() => setActiveTab('yes24-bestseller')}
+              className={`flex items-center space-x-2 px-3.5 py-2 rounded-xl text-xs font-bold transition-all ${
+                activeTab === 'yes24-bestseller'
+                  ? 'bg-emerald-600 text-white shadow-md shadow-emerald-900/40'
+                  : 'text-slate-300 hover:text-white hover:bg-slate-800'
+              }`}
+            >
+              <ShoppingBag className="w-4 h-4 text-amber-400" />
+              <span>YES24 베스트셀러</span>
+            </button>
+
+            <button
               id="nav-tab-hall-of-fame"
               onClick={() => setActiveTab('hall-of-fame')}
               className={`flex items-center space-x-2 px-3.5 py-2 rounded-xl text-xs font-bold transition-all ${
@@ -108,7 +121,7 @@ export const Header: React.FC<HeaderProps> = ({
               }`}
             >
               <Trophy className="w-4 h-4 text-amber-400 fill-amber-400/20" />
-              <span>베스트셀러 & 독서왕</span>
+              <span>학급 베스트 & 독서왕</span>
             </button>
 
             <button
@@ -193,6 +206,17 @@ export const Header: React.FC<HeaderProps> = ({
         </button>
 
         <button
+          id="mobile-tab-yes24"
+          onClick={() => setActiveTab('yes24-bestseller')}
+          className={`flex flex-col items-center space-y-1 py-1 px-2 rounded-lg ${
+            activeTab === 'yes24-bestseller' ? 'text-emerald-400 font-bold' : 'text-slate-400'
+          }`}
+        >
+          <ShoppingBag className="w-4 h-4" />
+          <span>YES24</span>
+        </button>
+
+        <button
           id="mobile-tab-hall-of-fame"
           onClick={() => setActiveTab('hall-of-fame')}
           className={`flex flex-col items-center space-y-1 py-1 px-2 rounded-lg ${
@@ -200,7 +224,7 @@ export const Header: React.FC<HeaderProps> = ({
           }`}
         >
           <Trophy className="w-4 h-4" />
-          <span>베스트셀러</span>
+          <span>독서왕</span>
         </button>
 
         <button
